@@ -910,4 +910,9 @@
     <!-- Volume keys answer call -->
     <string name="call_volume_answer_title">Answer call</string>
     <string name="call_volume_answer_summary">Enable for volume keys to answer call</string>
-  </resources>
+
+    <!-- Status bar brightness control -->
+    <string name="status_bar_brightness_control_title">Brightness control</string>
+    <string name="status_bar_brightness_control_summary">Adjust brightness by sliding across the status bar</string>
+
+</resources>
