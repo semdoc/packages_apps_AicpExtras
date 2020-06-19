@@ -30,6 +30,14 @@ import com.android.internal.util.aicp.DeviceUtils;
 public class Notifications extends BaseSettingsFragment {
 
     private static final String ALERT_SLIDER_PREF = "alert_slider_notifications";
+    private static final String PREF_FLASH_ON_CALL = "flashlight_on_call";
+    private static final String PREF_FLASH_ON_CALL_DND = "flashlight_on_call_ignore_dnd";
+    private static final String PREF_FLASH_ON_CALL_RATE = "flashlight_on_call_rate";
+
+    private SystemSettingIntListPreference mFlashOnCall;
+    private SystemSettingSwitchPreference mFlashOnCallIgnoreDND;
+    private SystemSettingSeekBarPreference mFlashOnCallRate;
+
 
     @Override
     protected int getPreferenceResource() {
@@ -47,6 +55,24 @@ public class Notifications extends BaseSettingsFragment {
             getPreferenceScreen().removePreference(findPreference(
                     Settings.System.FLASHLIGHT_ON_CALL));
         }
+
+        mFlashOnCallRate = (SystemSettingSeekBarPreference)
+                findPreference(PREF_FLASH_ON_CALL_RATE);
+        int value = Settings.System.getInt(resolver,
+                Settings.System.FLASHLIGHT_ON_CALL_RATE, 1);
+        mFlashOnCallRate.setValue(value);
+        mFlashOnCallRate.setOnPreferenceChangeListener(this);
+
+        mFlashOnCallIgnoreDND = (SystemSettingSwitchPreference)
+                findPreference(PREF_FLASH_ON_CALL_DND);
+        value = Settings.System.getInt(resolver,
+                Settings.System.FLASHLIGHT_ON_CALL, 0);
+        mFlashOnCallIgnoreDND.setVisible(value > 1);
+        mFlashOnCallRate.setVisible(value != 0);
+
+        mFlashOnCall = (SystemSettingListPreference)
+                findPreference(PREF_FLASH_ON_CALL);
+        mFlashOnCall.setOnPreferenceChangeListener(this);
 
         boolean alertSliderAvailable = getActivity().getResources().getBoolean(
                 com.android.internal.R.bool.config_hasAlertSlider);
