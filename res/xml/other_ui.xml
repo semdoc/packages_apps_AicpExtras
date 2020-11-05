@@ -53,9 +53,9 @@
         android:title="@string/headset_connect_player_title"
         android:summary="@string/headset_connect_player_summary"
         android:defaultValue="false" />
-
-    <!- Show CPU Info overlay ->
- -->    <SwitchPreference
+-->
+    <!-- Show CPU Info overlay -->
+    <SwitchPreference
         android:key="show_cpu_info"
         android:title="@string/show_cpu_info"
         android:summary="@string/show_cpu_info_summary"
@@ -69,14 +69,14 @@
          android:summary="@string/doze_on_charge_summary"
          android:defaultValue="false" />
 
-    <!- Wake on plug ->
+-->
+    <!-- Wake on plug -->
     <com.aicp.gear.preference.GlobalSettingSwitchPreference
         android:key="wake_when_plugged_or_unplugged"
         android:title="@string/wake_when_plugged_or_unplugged_title"
         android:summary="@string/wake_when_plugged_or_unplugged_summary"
         android:defaultValue="false" />
-
-    <!- Wireless charging animation ->
+    <!-- Wireless charging animation -->
     <com.aicp.gear.preference.SystemSettingSwitchPreference
         android:key="wireless_charging_animation"
         android:title="@string/wireless_charging_animation_title"
